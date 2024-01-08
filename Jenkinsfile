@@ -3,7 +3,7 @@ pipeline{
 	agent any
 
 	environment {
-		DOCKERHUB_CREDENTIALS=credentials('docker-hub')
+		DOCKERHUB_CREDENTIALS=credentials('credentials')
 	}
 
 	stages {
@@ -11,14 +11,14 @@ pipeline{
 	    stage('gitclone') {
 
 			steps {
-				git 'https://github.com/Genchuwu/test.git'
+				git 'https://github.com/username/name.git'
 			}
 		}
 
 		stage('Build') {
 
 			steps {
-				sh 'docker build -t evgeni2003/flask:latest .'
+				sh 'docker build -t username/repo:latest .'
 			}
 		}
 
@@ -32,7 +32,7 @@ pipeline{
 		stage('Push') {
 
 			steps {
-				sh 'docker push evgeni2003/flask:latest'
+				sh 'docker push username/repo:latest'
 			}
 		}
 	}
